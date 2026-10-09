@@ -49,7 +49,7 @@ Only consider changing bundled libraries if the conflict is confirmed for the ex
 
 **Observed in project notes:** the author associated this behaviour with some MATLAB toolboxes and reported a minimal installed set: MATLAB, Simulink, DSP System Toolbox, Signal Processing Toolbox, and Fixed-Point Designer.
 
-This is not proof that MATLAB Compiler or MATLAB Compiler SDK universally causes the problem. Verify the toolboxes actually required by your design and follow the supported CASPER/Xilinx software combination. Avoid removing toolboxes based only on a similar-looking symptom.
+A related discussion is available in [AMD Adaptive Support: Model Composer 2021.2 / MATLAB R2021a initialization hang on Ubuntu 20.04.1](https://adaptivesupport.amd.com/s/question/0D52E00006vF6FOSA0/model-composer-v20212-matlab-r2021a-gets-stuck-at-initialization-stage-on-ubuntu-20041?language=en_US). That thread concerns Model Composer 2021.2, so use it as related context rather than assuming it exactly matches the 2021.1 setup described here. This is not proof that MATLAB Compiler or MATLAB Compiler SDK universally causes the problem. Verify the toolboxes actually required by your design and follow the supported CASPER/Xilinx software combination. Avoid removing toolboxes based only on a similar-looking symptom.
 
 ## 4.5 Error: FPGA part not found, e.g. `xczu49dr-2-e-es1`
 
@@ -63,7 +63,7 @@ Checklist:
 4. Compare the platform file with the matching upstream branch.
 5. Only adjust the part string if the actual hardware and installed device definitions support that choice.
 
-The supplied notes report changing `xczu49dr-ffvf1760-2-e-es1` to `xczu49dr-ffvf1760-2-e` for production silicon. This is a case-specific change, not a universal fix.
+The setup notes describe changing `xczu49dr-ffvf1760-2-e-es1` to `xczu49dr-ffvf1760-2-e` for production silicon. This is a case-specific change, not a universal fix. See the [CASPER mailing-list discussion 1](https://www.mail-archive.com/casper@lists.berkeley.edu/msg08900.html) and [discussion 2](https://www.mail-archive.com/casper@lists.berkeley.edu/msg09150.html) linked from the setup PDF.
 
 ## 4.6 `.fpg` generated but `.dtbo` missing; `XLNX_DT_REPO_PATH` not set
 
