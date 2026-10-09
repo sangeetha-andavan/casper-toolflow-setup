@@ -63,3 +63,32 @@ When searching upstream issues or asking the CASPER community for help, include:
 - What you tried and the first point where the procedure diverged from the official guide.
 
 Do not report “installation failed” alone; a minimal, reproducible error report makes the issue much easier to diagnose.
+
+
+## Additional links from the environment setup PDF
+
+These links are explicitly embedded in the supplied *CASPER Toolflow Environment Setup* PDF. They are relevant to the MATLAB/System Generator initialization issue, installation steps, and ZCU216 engineering-sample versus production-silicon part mismatch.
+
+13. **AMD Adaptive Support: Model Composer 2021.2 / MATLAB R2021a initialization hang on Ubuntu 20.04.1**  
+    https://adaptivesupport.amd.com/s/question/0D52E00006vF6FOSA0/model-composer-v20212-matlab-r2021a-gets-stuck-at-initialization-stage-on-ubuntu-20041?language=en_US  
+    Refer to this in the MATLAB/System Generator initialization troubleshooting section. The title mentions Model Composer 2021.2, so treat it as a related discussion, not proof that it exactly matches the 2021.1 installation.
+
+14. **CASPER installation notes (GitLab, University of Turku)**  
+    https://gitlab.utu.fi/kjwiik/casper-installation  
+    Additional community installation notes linked by the setup PDF.
+
+15. **CASPER installation gist**  
+    https://gist.github.com/dcxSt/13f0760ee423082f15e151170b943fa6  
+    Additional installation reference linked by the setup PDF.
+
+16. **CASPER mailing-list archive: ZCU216 / engineering-sample part issue (issue 1)**  
+    https://www.mail-archive.com/casper@lists.berkeley.edu/msg08900.html  
+    Cite alongside the discussion of the `xczu49dr-ffvf1760-2-e-es1` versus production-silicon part string.
+
+17. **CASPER mailing-list archive: ZCU216 / engineering-sample part issue (issue 2)**  
+    https://www.mail-archive.com/casper@lists.berkeley.edu/msg09150.html  
+    Cite alongside the discussion of the `xczu49dr-ffvf1760-2-e-es1` versus production-silicon part string.
+
+18. **CASPER mailing-list archive: Vitis backend and device-tree generation**  
+    https://www.mail-archive.com/casper@lists.berkeley.edu/msg09031.html  
+    This link appears in the Vitis backend section of the PDF and is already listed above; it is relevant to `JASPER_BACKEND=vitis` and `XLNX_DT_REPO_PATH`.
