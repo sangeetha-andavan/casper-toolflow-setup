@@ -11,6 +11,7 @@ Practical setup notes for the CASPER FPGA toolflow and `casperfpga`, with a focu
 3. [Install `casperfpga`](docs/03-casperfpga-and-board-bringup.md)
 4. [Troubleshoot errors](docs/04-troubleshooting.md)
 5. [References and upstream issue resources](docs/05-references.md)
+6. [Reproducibility record and validation checklist](docs/06-reproducibility-and-validation.md)
 
 ## Project-tested configuration recorded in the source notes
 
@@ -20,13 +21,13 @@ Practical setup notes for the CASPER FPGA toolflow and `casperfpga`, with a focu
 | MATLAB | R2021a Update 8 |
 | Vivado | 2021.1, ML Enterprise |
 | Vitis Model Composer | 2021.1 |
-| Python | 3.8 in a virtual environment |
+| Python | 3.8.10 in a virtual environment |
 | `mlib_devel` | `m2021a` branch |
 | `casperfpga` | `py38` branch |
-| Target | ZCU216 production silicon |
+| Target | ZCU216; exact silicon variant not yet confirmed |
 | RFSoC backend | Jasper with Vitis backend for `.dtbo` generation |
 
-The uploaded project notes report a successful build of a ZCU216 tutorial platform, `.fpg` generation, and later `.dtbo` generation after configuring the Vitis backend and matching device-tree repository. Treat this as a record of that machine's result; record exact commits and installer versions when reproducing it.
+The project owner reports successful generation of `.fpg` and `.dtbo` files and programming/testing the board. The exact board silicon variant and supporting logs still need review. See the [reproducibility checklist](docs/06-reproducibility-and-validation.md) for the evidence to capture; do not treat a reported result as independently verified until the corresponding evidence has been reviewed.
 
 ## What this repository covers
 
