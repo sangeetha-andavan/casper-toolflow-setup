@@ -1,58 +1,42 @@
 # CASPER Toolflow Setup and Troubleshooting
 
-Practical setup notes for the CASPER FPGA toolflow and `casperfpga`, with a focus on the **Xilinx ZCU216 RFSoC**. This repository organises a working setup record, board bring-up steps, common failures, recovery notes, and links to official documentation.
+Practical setup and troubleshooting documentation for the CASPER FPGA toolflow and `casperfpga`, focused on the Xilinx ZCU216 RFSoC platform.
 
-> **Important:** CASPER toolflow builds depend on a compatible combination of Ubuntu, MATLAB/Simulink, Vivado/Vitis Model Composer, Python, `mlib_devel`, platform files, and device-tree sources. Check the official compatibility matrix before copying any version-specific command. The configuration recorded here is a historical, working project configuration—not a promise that every installation will behave identically.
+CASPER builds depend on compatible versions of Ubuntu, MATLAB/Simulink, Vivado/Vitis Model Composer, Python, `mlib_devel`, platform files, and device-tree sources. Check the [official compatibility matrix](https://casper-toolflow.readthedocs.io/en/latest/src/Installing-the-Toolflow.html) before following version-specific commands.
 
-## Start here
+## Documentation
 
-1. [Choose compatible versions](docs/01-version-matrix-and-scope.md)
-2. [Install the CASPER toolflow](docs/02-toolflow-installation.md)
-3. [Install `casperfpga`](docs/03-casperfpga-and-board-bringup.md)
-4. [Troubleshoot errors](docs/04-troubleshooting.md)
-5. [References and upstream issue resources](docs/05-references.md)
-6. [Reproducibility record and validation checklist](docs/06-reproducibility-and-validation.md)
+1. [Complete environment setup](docs/00-complete-toolflow-environment-setup.md)
+2. [Version compatibility and scope](docs/01-version-matrix-and-scope.md)
+3. [Toolflow installation](docs/02-toolflow-installation.md)
+4. [`casperfpga` and ZCU216 board bring-up](docs/03-casperfpga-and-board-bringup.md)
+5. [Troubleshooting](docs/04-troubleshooting.md)
+6. [References](docs/05-references.md)
 
-## Project-tested configuration recorded in the source notes
+## Configuration covered
 
-| Component | Recorded version / setting |
+| Component | Version / setting |
 |---|---|
 | Host OS | Ubuntu 20.04 LTS |
 | MATLAB | R2021a Update 8 |
-| Vivado | 2021.1, ML Enterprise |
-| Vitis Model Composer | 2021.1 |
-| Python | 3.8.10 in a virtual environment |
+| Vivado | 2021.1 |
+| Vitis Model Composer / Vitis | 2021.1 |
+| Python | 3.8 virtual environment |
 | `mlib_devel` | `m2021a` branch |
 | `casperfpga` | `py38` branch |
-| Target | ZCU216; exact silicon variant not yet confirmed |
-| RFSoC backend | Jasper with Vitis backend for `.dtbo` generation |
+| Target | Xilinx ZCU216 RFSoC; confirm the silicon variant for your hardware |
+| Jasper backend | Vitis for the documented `.dtbo` generation workflow |
 
-The project owner reports successful generation of `.fpg` and `.dtbo` files and programming/testing the board. The exact board silicon variant and supporting logs still need review. See the [reproducibility checklist](docs/06-reproducibility-and-validation.md) for the evidence to capture; do not treat a reported result as independently verified until the corresponding evidence has been reviewed.
-
-## What this repository covers
-
-- Version matching and separation of the Python control library from the FPGA build toolchain.
-- Python virtual environment and `casperfpga` installation.
-- `mlib_devel` checkout and `startsg.local` configuration.
-- ZCU216 SD-card image, serial console, Ethernet, connection, and register tests.
-- Reported errors involving `bdist_wheel`, Vivado installation stalls, MATLAB/Simulink library conflicts, missing FPGA part definitions, and missing `XLNX_DT_REPO_PATH`.
-- Safe recovery and shutdown notes for a ZCU216 SD card.
+The guides cover installation, environment configuration, FPGA build outputs, board communication, firmware programming, register testing, and common setup failures. Commands and platform settings may need adjustment for different software releases or hardware variants.
 
 ## Safety notes
 
-- **Never copy a `dd` command with `/dev/sdb` unchanged.** Device names vary and the wrong target can erase your computer's disk. Identify the SD card with `lsblk`, verify size/model, unmount its partitions, and double-check the target before writing.
-- Do not run Xilinx installers as root unless the installer documentation for that exact package says to. The source notes conflict on this point for Vivado versus Vitis; follow the vendor installer instructions consistently.
-- Do not move vendor libraries, create system-wide symlinks, or change `/bin/sh` without understanding the system-wide consequences. These are legacy workarounds, not universal first-line fixes.
-- Back up `startsg.local` before editing it. Do not commit machine-specific paths, IP addresses, credentials, licence files, or proprietary installers.
-- The default board credentials recorded in some notes should be changed or secured according to your lab's policy.
-
-## Source and confidence labels
-
-Each troubleshooting entry distinguishes:
-- **Observed in project notes** — documented in the two supplied setup PDFs.
-- **Official reference** — supported by upstream documentation or the vendor/project source.
-- **Caution / verify locally** — version-specific or potentially destructive advice that should not be applied blindly.
+- Before writing an SD-card image, identify the correct whole-device path with `lsblk`. A mistaken target can erase another disk.
+- Follow the vendor installation instructions for your exact Xilinx software release.
+- Avoid changing vendor libraries, creating system-wide symlinks, or changing `/bin/sh` unless the cause is understood and a rollback plan is available.
+- Back up `startsg.local` before editing it.
+- Do not commit credentials, licence files, private network details, or proprietary installers.
 
 ## Contributing
 
-When adding a fix, include the exact error message, OS/tool versions, hardware revision, the steps tried, the final verified fix, and a link to an upstream issue or mailing-list discussion if available. Never publish passwords, licence details, private network data, or proprietary binaries.
+When documenting a fix, include the error message, OS and tool versions, hardware variant, steps to reproduce, and the resolution. Redact secrets and private infrastructure details before publishing logs.
