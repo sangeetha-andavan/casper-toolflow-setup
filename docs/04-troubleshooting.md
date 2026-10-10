@@ -63,7 +63,7 @@ Checklist:
 4. Compare the platform file with the matching upstream branch.
 5. Only adjust the part string if the actual hardware and installed device definitions support that choice.
 
-The setup notes describe changing `xczu49dr-ffvf1760-2-e-es1` to `xczu49dr-ffvf1760-2-e` for production silicon. This is a case-specific change, not a universal fix. See the [CASPER mailing-list discussion 1](https://www.mail-archive.com/casper@lists.berkeley.edu/msg08900.html) and [discussion 2](https://www.mail-archive.com/casper@lists.berkeley.edu/msg09150.html) linked from the setup PDF.
+The setup notes describe changing `xczu49dr-ffvf1760-2-e-es1` to `xczu49dr-ffvf1760-2-e` for production silicon. This is a case-specific change, not a universal fix. The setup PDF includes two links labelled “CASPER Mail Archive - ES1 issue 1/2”, but their target URLs are not exposed in the extracted text. Add those citations once the original link destinations have been recovered.
 
 ## 4.6 `.fpg` generated but `.dtbo` missing; `XLNX_DT_REPO_PATH` not set
 
@@ -93,7 +93,7 @@ Also verify:
 - `startsg.local` is sourced by the same shell that launches `startsg`.
 - The required environment variables are exported and are not only set in another terminal.
 
-See the [official RFSoC tutorial](https://casper-toolflow.readthedocs.io/projects/tutorials/en/latest/tutorials/rfsoc/tut_getting_started.html) and the [CASPER mailing-list discussion](https://www.mail-archive.com/casper@lists.berkeley.edu/msg09031.html).
+See the [CASPER mailing-list discussion on the Vitis backend and device-tree generation](https://www.mail-archive.com/casper@lists.berkeley.edu/msg09031.html), which is linked in the setup PDF.
 
 ## 4.7 QT4 / `libcanberra-gtk-module` messages
 
